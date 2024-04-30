@@ -16,17 +16,20 @@ import PaginationControls from "./PaginationControls";
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const [jobItems, setJobItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!searchText) return;
 
     const fetchData = async () => {
+      setIsLoading(true);
       const response = await fetch(
         `https://bytegrad.com/course-assets/projects/rmtdev/api/data?search=${searchText}`
       );
 
       const data = await response.json();
       setJobItems(data.jobItems);
+      setIsLoading(false);
     };
 
     fetchData();
@@ -48,7 +51,7 @@ const App = () => {
             <ResultsCount />
             <SortingControls />
           </SidebarTop>
-          <JobList jobItems={jobItems} />
+          <JobList jobItems={jobItems} isLoading={isLoading} />
           <PaginationControls />
         </Sidebar>
         <JobItemContent />
