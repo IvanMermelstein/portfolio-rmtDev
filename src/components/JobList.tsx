@@ -1,7 +1,13 @@
+import { JobItem } from "../lib/types";
 import JobListItem from "./JobListItem";
 import Spinner from "./Spinner";
 
-const JobList = ({ jobItems, isLoading }) => {
+type JobListProps = {
+  jobItems: JobItem[];
+  isLoading: boolean;
+};
+
+const JobList = ({ jobItems, isLoading }: JobListProps) => {
   return (
     <ul className="job-list">
       {isLoading && <Spinner />}
