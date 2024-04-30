@@ -16,7 +16,7 @@ import useJobItems from "../hooks/useJobItems";
 
 const App = () => {
   const [searchText, setSearchText] = useState("");
-  const { jobItems, isLoading } = useJobItems(searchText);
+  const [jobItems, isLoading] = useJobItems(searchText);
 
   return (
     <>
