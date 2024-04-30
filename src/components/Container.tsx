@@ -1,11 +1,5 @@
-import Sidebar from "./Sidebar";
-import JobItemContent from "./JobItemContent";
+const Container = ({ children }) => {
+  return <div className="container">{children}</div>;
+};
 
-export default function Container() {
-  return (
-    <div className="container">
-      <Sidebar />
-      <JobItemContent />
-    </div>
-  );
-}
+export default Container;
